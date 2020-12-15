@@ -6,14 +6,12 @@ class User {
         this.email = email;
         this.category = category;
         this.subscriptions = [];
-        this.subscribers = 0;
-        this.uploadedVids = [];
         this.watchLater = [];
     }
     
-    subscribe(user) {
-      user.subscribers += 1;
-      return this.subscriptions.push(user);
+    subscribe(channel) {
+      channel.subscribers += 1;
+      return this.subscriptions.push(channel);
     }
     
     like(videoTitle) {
