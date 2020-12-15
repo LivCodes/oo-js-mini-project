@@ -1,5 +1,5 @@
-const allVids = [];
-
+Video.allVids = [];
+// make youtube class: inventory prop 
 class User {
     constructor(userName, email, category){
         this.userName = userName;
@@ -16,10 +16,10 @@ class User {
       return this.subscriptions.push(user);
     }
     
-    like(video) {
-        const vidInd = allVids.findIndex(vid => vid.title === video);
-        allVids[vidInd].likeCount += 1;
-        return `${allVids[vidInd].title} has been liked`;
+    like(videoTitle) {
+        const vidInd = Video.allVids.findIndex(vid => vid.title === videoTitle);
+        Video.allVids[vidInd].likeCount += 1;
+        return `${Video.allVids[vidInd].title} has been liked`;
     }
     
     dislike(video){
@@ -41,7 +41,7 @@ class User {
     uploadVideo(title, vidDescription){
         const vid = new Video(title, vidDescription, this);
         this.uploadedVids.push(vid)
-        allVids.push(vid);
+        Video.allVids.push(vid);
         return `${vid.title} has been uploaded`;
     }
 }
