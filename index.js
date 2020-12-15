@@ -1,4 +1,4 @@
-
+const allVids = [];
 
 class User {
     constructor(userName, email, category){
@@ -17,7 +17,9 @@ class User {
     }
     
     like(video) {
-        return video.likeCount += 1;
+        const vidInd = allVids.findIndex(vid => vid.title === video);
+        allVids[vidInd].likeCount += 1;
+        return `${allVids[vidInd].title} has been liked`;
     }
     
     dislike(video){
@@ -39,7 +41,8 @@ class User {
     uploadVideo(title, vidDescription){
         const vid = new Video(title, vidDescription, this);
         this.uploadedVids.push(vid)
-        return `video has been uploaded`
+        allVids.push(vid);
+        return `${vid.title} has been uploaded`;
     }
 }
     
